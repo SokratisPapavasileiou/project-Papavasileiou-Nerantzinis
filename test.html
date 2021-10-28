@@ -31,7 +31,7 @@
 
         <div class="container-fluid">
 
-          <a class="navbar-brand" href="#"> <img src="cookie.png" style="width: 60px;height: 50px;">Title </a>
+          <a class="navbar-brand" href="test.html"> <img src="cookie.png" style="width: 60px;height: 50px;">Title </a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -45,13 +45,13 @@
 
               <li class="nav-item">
 
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="test.html">Home</a>
 
               </li>
 
               <li class="nav-item">
 
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="about.html">About</a>
 
               </li>
         </ul>
@@ -192,7 +192,7 @@
     // Delete row on delete button click
     $(document).on("click", ".delete", function(){
           $(this).parents("tr").remove();
-      $(".add-new").removeAttr("disabled");
+          $(".add-new").removeAttr("disabled");
       });
   });
   </script>
