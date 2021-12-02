@@ -58,202 +58,35 @@
     </div>
  </nav>
  <style>
-  body {
-      color: #0b5be6;
-      background: #F5F7FA;
-      font-family: 'Open Sans', sans-serif;
-  }
-  .table-wrapper {
-      width: 700px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 20px;	
-      box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  }
-  .table-title {
-      padding-bottom: 10px;
-      margin: 0 0 10px;
-  }
-  .table-title h2 {
-      margin: 6px 0 0;
-      font-size: 22px;
-  }
-  .table-title .add-new {
-      float: right;
-      height: 30px;
-      font-weight: bold;
-      font-size: 12px;
-      text-shadow: none;
-      min-width: 100px;
-      border-radius: 50px;
-      line-height: 13px;
-  }
-  .table-title .add-new i {
-      margin-right: 4px;
-  }
-  table.table {
-      table-layout: fixed;
-  }
-  table.table tr th, table.table tr td {
-      border-color: #e9e9e9;
-  }
-  table.table th i {
-      font-size: 13px;
-      margin: 0 5px;
-      cursor: pointer;
-  }
-  table.table th:last-child {
-      width: 100px;
-  }
-  table.table td a {
-      cursor: pointer;
-      display: inline-block;
-      margin: 0 5px;
-      min-width: 24px;
-  }    
-  table.table td a.add {
-      color: #27C46B;
-  }
-  table.table td a.edit {
-      color: #07e71a;
-  }
-  table.table td a.delete {
-      color: #E34724;
-  }
-  table.table td i {
-      font-size: 19px;
-  }
-  table.table td a.add i {
-      font-size: 24px;
-      margin-right: -1px;
-      position: relative;
-      top: 3px;
-  }    
-  table.table .form-control {
-      height: 32px;
-      line-height: 32px;
-      box-shadow: none;
-      border-radius: 2px;
-  }
-  table.table .form-control.error {
-      border-color: #f50000;
-  }
-  table.table td .add {
-      display: none;
-  }
+ 
   </style>
   <script>
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    var actions = $("table td:last-child").html();
   
-      $(".add-new").click(function(){
-      $(this).attr("disabled", "disabled");
-      var index = $("table tbody tr:last-child").index();
-          var row = '<tr>' +
-              '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-              '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-              '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
-        '<td>' + actions + '</td>' +
-          '</tr>';
-        $("table").append(row);		
-      $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-          $('[data-toggle="tooltip"]').tooltip();
-      });
-    // Add row on add button click
-    $(document).on("click", ".add", function(){
-      var empty = false;
-      var input = $(this).parents("tr").find('input[type="text"]');
-          input.each(function(){
-        if(!$(this).val()){
-          $(this).addClass("error");
-          empty = true;
-        } else{
-                  $(this).removeClass("error");
-              }
-      });
-      $(this).parents("tr").find(".error").first().focus();
-      if(!empty){
-        input.each(function(){
-          $(this).parent("td").html($(this).val());
-        });			
-        $(this).parents("tr").find(".add, .edit").toggle();
-        $(".add-new").removeAttr("disabled");
-      }		
-      });
-    // Edit row on edit button click
-    $(document).on("click", ".edit", function(){		
-          $(this).parents("tr").find("td:not(:last-child)").each(function(){
-        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-      });		
-      $(this).parents("tr").find(".add, .edit").toggle();
-      $(".add-new").attr("disabled", "disabled");
-      });
-    // Delete row on delete button click
-    $(document).on("click", ".delete", function(){
-          $(this).parents("tr").remove();
-          $(".add-new").removeAttr("disabled");
-      });
-  });
   </script>
   </head>
   <body>
-  <div class="container-lg">
-      <div class="table-responsive">
-          <div class="table-wrapper">
-              <div class="table-title">
-                  <div class="row">
-                      <div class="col-sm-8"><h2>Employees <b></b></h2></div>
-                      <div class="col-sm-4">
-                          <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> edit</button>
-                      </div>
-                  </div>
-              </div>
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Sir Name</th>
-                          <th>Employeement</th>
-                          <th>Cell Phone</th>
-                          <th>Edit</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>Nerantzinis</td>
-                          <td>IT</td>
-                          <td>6977777777</td>
-                          <td>
-                              <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                              <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Papavasileiou</td>
-                          <td>Customer Service</td>
-                          <td>6988888888</td>
-                          <td>
-                              <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                              <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                              <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Eduardo</td>
-                          <td>Human Resources</td>
-                          <td>6955555555</td>
-                          <td>
-                              <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                              <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                              <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                          </td>
-                      </tr>      
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>     
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>phone</th>
+          <th>email</th>
+        </tr>
+        <tr>
+          <td>Sokratis Papavasileiou</td>
+          <td>693333333</td>
+          <td>sokratis@email.com</td>
+        </tr>
+        <tr>
+          <td>Grigoris Nerantzinis</td>
+          <td>6944444444</td>
+          <td>grigoris@email.com</td>
+        </tr>
+        <tr>
+            <td>Eduardo</td>
+            <td>6955555555</td>
+            <td>edouardo@email.com</td>
+          </tr>
+      </table>
   </body>
  
   
@@ -266,11 +99,7 @@
         <span class="text-muted">&copy; 2021 Company, Inc</span>
       </div>
   
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-      </ul>
+      
     </footer>
   </div>
   
